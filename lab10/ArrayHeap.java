@@ -109,7 +109,9 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         int parIdx = parentIndex(index);
         if (getNode(parIdx).myPriority > getNode(index).myPriority) {
             swap(parIdx,index);
-            swim(parIdx);
+            if (inBounds(parIdx)) {
+                swim(parIdx);
+            }
         }
     }
 
@@ -133,7 +135,9 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         if (getNode(index).myPriority >= getNode(minidx).myPriority)
         {
             swap(minidx,index);
-            sink(minidx);
+            if (inBounds(minidx)) {
+                sink(minidx);
+            }
         }
     }
 
